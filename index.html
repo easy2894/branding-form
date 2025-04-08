@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFTER! Brending Brief</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      min-height: 100vh;
+      color: #111;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    .left, .right {
+      box-sizing: border-box;
+      padding: 30px;
+    }
+    .left {
+      flex: 2;
+      background-color: #ffffff;
+    }
+    .right {
+      flex: 1;
+      background-color: #f1f3f6;
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 0;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .services {
+      margin-top: 20px;
+    }
+    .services label {
+      font-weight: normal;
+      display: block;
+      margin: 5px 0;
+    }
+    .total {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    button {
+      background-color: #234BFF;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .info-text {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .left, .right {
+        flex: 1 1 100%;
+        padding: 20px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      button {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      input[type="text"], textarea, select {
+        font-size: 13px;
+      }
+      .total {
+        font-size: 16px;
+      }
+      .info-text {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="left">
+    <h2>Brif</h2>
+    <form id="briefForm">
+      <label>1. Loyihangiz nomi:</label><input type="text" name="q1">
+      <label>2. Faoliyat turi:</label><input type="text" name="q2">
+      <label>3. Nomingiz ma’nosi:</label><input type="text" name="q3">
+      <label>4. Qancha vaqtdan beri mavjud?:</label><input type="text" name="q4">
+      <label>5. Narx segmenti:</label>
+      <select name="q5">
+        <option value="Yuqori">Yuqori</option>
+        <option value="O'rta">O'rta</option>
+        <option value="Past">Past</option>
+      </select>
+      <label>6. Qadriyatlaringiz:</label><input type="text" name="q6">
+      <label>7. Raqobatchilar va yo'nalishlari:</label><textarea name="q7"></textarea>
+      <label>8. Ustunliklaringiz:</label><textarea name="q8"></textarea>
+      <label>9. Auditoriya tavsifi:</label><textarea name="q9"></textarea>
+      <label>10. Xarid odatlari:</label><textarea name="q10"></textarea>
+      <label>11. Slogan:</label><input type="text" name="q11">
+      <label>12. Bitta so'z bilan ta'rif:</label><input type="text" name="q12">
+      <label>13. Logotip qayerda ko'rsatiladi?:</label><input type="text" name="q13">
+      <label>14. Logotip ko'rinishi:</label><textarea name="q14"></textarea>
+      <label>15. Minimalizm/detallar:</label><input type="text" name="q15">
+      <label>16. Ranglar istagi/yoki yo'q:</label><input type="text" name="q16">
+      <label>17. Yaratuvchanlik bahosi (1-10):</label>
+      <select name="q17">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+        <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+      </select>
+      <label>18. Qaror qabul qiluvchilar:</label>
+      <select name="q18">
+        <option>1</option><option>2-3</option><option>4-5</option>
+      </select>
+      <label>19. Telefon va Telegram:</label><input type="text" name="q19">
+      <label>20. Yoqqan brendlar:</label><textarea name="q20"></textarea>
+    </form>
+  </div>
+
+  <div class="right">
+    <div>
+      <h2>Kalkulyator</h2>
+      <div class="services">
+        <label><input type="checkbox" value="50"> Logotip ($50)</label>
+        <label><input type="checkbox" value="20"> Prezintatsiya ($20)</label>
+        <label><input type="checkbox" value="50"> Firmenniy stil ($50)</label>
+        <label><input type="checkbox" value="5"> Ranglar ($5)</label>
+        <label><input type="checkbox" value="5"> Shrift ($5)</label>
+        <label><input type="checkbox" value="10"> Guidline style ($10)</label>
+        <label><input type="checkbox" value="30"> Animatsiya logotip ($30)</label>
+        <label><input type="checkbox" value="50"> Brending ($50)</label>
+        <label><input type="checkbox" value="200"> Naming ($200)</label>
+        <label><input type="checkbox" value="500"> Brendbook ($500)</label>
+        <label><input type="checkbox" value="300"> Guidebook ($300)</label>
+        <label><input type="checkbox" value="50"> Konkurent-analiz ($50)</label>
+        <label><input type="checkbox" value="30"> Maqsadli auditoriyani o’rganish ($30)</label>
+        <label><input type="checkbox" value="50"> Vizual dizaynlar ($50)</label>
+        <label><input type="checkbox" value="30"> Social media dizayni ($30)</label>
+      </div>
+      <div class="total">Umumiy summa: $<span id="total">0</span></div>
+      <button onclick="submitForm()">Yuborish</button>
+      <div class="info-text">Biz siz bilan imkon qadar tez orada bog'lanamiz</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const checkboxes = document.querySelectorAll('.services input[type=checkbox]');
+  const totalDisplay = document.getElementById('total');
+
+  function updateTotal() {
+    let total = 0;
+    checkboxes.forEach(cb => {
+      if (cb.checked) total += Number(cb.value);
+    });
+    totalDisplay.textContent = total;
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
+
+  function submitForm() {
+    
+    const formData = new FormData(document.getElementById('briefForm'));
+    const selectedServices = [];
+    checkboxes.forEach(cb => {
+      if (cb.checked) selectedServices.push(cb.parentElement.textContent.trim());
+    });
+
+    let message = "🧾 *Yangi brif!*%0A%0A";
+    message += "*Tanlangan xizmatlar:*%0A" + selectedServices.join("%0A") + "%0A%0A";
+    for (let [key, value] of formData.entries()) {
+      message += `*${key}*: ${value}%0A`;
+    }
+
+    const token = "7094241083:AAHqBCDryZOFDtmzwdBOgM4mNfME0vUSZnI";
+    const chatId = "1167533727";
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${message}&parse_mode=Markdown`;
+
+    fetch(url)
+      .then(response => {
+        if (response.ok) {
+          alert("✅ Ma'lumotlar yuborildi!");
+        } else {
+          alert("❌ Yuborishda xatolik yuz berdi.");
+        }
+      });
+    
+  }
+</script>
+
+</body>
+</html>
