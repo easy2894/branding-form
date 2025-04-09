@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -6,215 +5,545 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AFTER! Brending Brief</title>
   <style>
-    body {
+    :root {
+      --primary: #234BFF;
+      --primary-light: #4666ff;
+      --primary-dark: #1a3ad9;
+      --black: #111111;
+      --white: #ffffff;
+      --gray-light: #f4f6f8;
+      --gray: #e1e5eb;
+      --gray-dark: #9ea4af;
+    }
+    
+    * {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #f4f6f8;
-      display: flex;
-      min-height: 100vh;
-      color: #111;
-    }
-    .container {
-      display: flex;
-      width: 100%;
-      flex-wrap: wrap;
-    }
-    .left, .right {
+      padding: 0;
       box-sizing: border-box;
-      padding: 30px;
     }
-    .left {
+    
+    body {
+      font-family: 'Roboto', 'Arial', sans-serif;
+      background-color: var(--gray-light);
+      color: var(--black);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 20px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    
+    main {
+      padding: 40px 0;
+    }
+    
+    .brief-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    
+    .brief-form {
       flex: 2;
-      background-color: #ffffff;
+      padding: 30px;
+      min-width: 300px;
     }
-    .right {
+    
+    .calculator {
       flex: 1;
-      background-color: #f1f3f6;
+      padding: 30px;
+      background-color: var(--primary);
+      color: var(--white);
+      min-width: 300px;
     }
+    
     h2 {
-      font-size: 24px;
-      margin-top: 0;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-block;
     }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+    }
+    
+    .calculator h2:after {
+      background-color: var(--white);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
     label {
-      font-weight: bold;
       display: block;
-      margin-top: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
-    input[type="text"], textarea, select {
+    
+    input[type="text"], 
+    textarea, 
+    select {
       width: 100%;
-      padding: 10px;
-      margin-top: 6px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-    .services {
-      margin-top: 20px;
-    }
-    .services label {
-      font-weight: normal;
-      display: block;
-      margin: 5px 0;
-    }
-    .total {
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-    button {
-      background-color: #234BFF;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 6px;
+      padding: 14px;
+      border: 2px solid var(--gray);
+      border-radius: 8px;
       font-size: 16px;
-      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    input[type="text"]:focus, 
+    textarea:focus, 
+    select:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(35, 75, 255, 0.2);
+    }
+    
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .checkbox-group {
+      margin-bottom: 10px;
+    }
+    
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+      cursor: pointer;
+      padding: 8px 0;
+    }
+    
+    .checkbox-custom {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 4px;
+      margin-right: 10px;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+    }
+    
+    .checkbox-group input {
+      display: none;
+    }
+    
+    .checkbox-group input:checked + .checkbox-label .checkbox-custom {
+      background-color: var(--white);
+      border-color: var(--white);
+    }
+    
+    .checkbox-group input:checked + .checkbox-label .checkbox-custom:after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 3px;
+      width: 10px;
+      height: 5px;
+      border-left: 2px solid var(--primary);
+      border-bottom: 2px solid var(--primary);
+      transform: rotate(-45deg);
+    }
+    
+    .total {
+      margin: 30px 0;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    button {
+      background-color: var(--white);
+      color: var(--primary);
+      border: none;
+      padding: 16px 24px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 700;
       cursor: pointer;
       width: 100%;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
+    
+    button:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+    
     .info-text {
-      margin-top: 15px;
+      margin-top: 20px;
       font-size: 14px;
-      color: #333;
+      opacity: 0.8;
+      text-align: center;
     }
-
+    
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 30px 0;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
     @media (max-width: 768px) {
-      .left, .right {
+      .brief-form, .calculator {
         flex: 1 1 100%;
-        padding: 20px;
       }
-      h2 {
-        font-size: 20px;
-      }
-      button {
-        font-size: 15px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      input[type="text"], textarea, select {
-        font-size: 13px;
-      }
-      .total {
-        font-size: 16px;
-      }
-      .info-text {
-        font-size: 13px;
+      
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
       }
     }
   </style>
 </head>
 <body>
-
-<div class="container">
-  <div class="left">
-    <h2>Brif</h2>
-    <form id="briefForm">
-      <label>1. Loyihangiz nomi:</label><input type="text" name="q1">
-      <label>2. Faoliyat turi:</label><input type="text" name="q2">
-      <label>3. Nomingiz ma’nosi:</label><input type="text" name="q3">
-      <label>4. Qancha vaqtdan beri mavjud?:</label><input type="text" name="q4">
-      <label>5. Narx segmenti:</label>
-      <select name="q5">
-        <option value="Yuqori">Yuqori</option>
-        <option value="O'rta">O'rta</option>
-        <option value="Past">Past</option>
-      </select>
-      <label>6. Qadriyatlaringiz:</label><input type="text" name="q6">
-      <label>7. Raqobatchilar va yo'nalishlari:</label><textarea name="q7"></textarea>
-      <label>8. Ustunliklaringiz:</label><textarea name="q8"></textarea>
-      <label>9. Auditoriya tavsifi:</label><textarea name="q9"></textarea>
-      <label>10. Xarid odatlari:</label><textarea name="q10"></textarea>
-      <label>11. Slogan:</label><input type="text" name="q11">
-      <label>12. Bitta so'z bilan ta'rif:</label><input type="text" name="q12">
-      <label>13. Logotip qayerda ko'rsatiladi?:</label><input type="text" name="q13">
-      <label>14. Logotip ko'rinishi:</label><textarea name="q14"></textarea>
-      <label>15. Minimalizm/detallar:</label><input type="text" name="q15">
-      <label>16. Ranglar istagi/yoki yo'q:</label><input type="text" name="q16">
-      <label>17. Yaratuvchanlik bahosi (1-10):</label>
-      <select name="q17">
-        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-        <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-      </select>
-      <label>18. Qaror qabul qiluvchilar:</label>
-      <select name="q18">
-        <option>1</option><option>2-3</option><option>4-5</option>
-      </select>
-      <label>19. Telefon va Telegram:</label><input type="text" name="q19">
-      <label>20. Yoqqan brendlar:</label><textarea name="q20"></textarea>
-    </form>
-  </div>
-
-  <div class="right">
-    <div>
-      <h2>Kalkulyator</h2>
-      <div class="services">
-        <label><input type="checkbox" value="50"> Logotip ($50)</label>
-        <label><input type="checkbox" value="20"> Prezintatsiya ($20)</label>
-        <label><input type="checkbox" value="50"> Firmenniy stil ($50)</label>
-        <label><input type="checkbox" value="5"> Ranglar ($5)</label>
-        <label><input type="checkbox" value="5"> Shrift ($5)</label>
-        <label><input type="checkbox" value="10"> Guidline style ($10)</label>
-        <label><input type="checkbox" value="30"> Animatsiya logotip ($30)</label>
-        <label><input type="checkbox" value="50"> Brending ($50)</label>
-        <label><input type="checkbox" value="200"> Naming ($200)</label>
-        <label><input type="checkbox" value="500"> Brendbook ($500)</label>
-        <label><input type="checkbox" value="300"> Guidebook ($300)</label>
-        <label><input type="checkbox" value="50"> Konkurent-analiz ($50)</label>
-        <label><input type="checkbox" value="30"> Maqsadli auditoriyani o’rganish ($30)</label>
-        <label><input type="checkbox" value="50"> Vizual dizaynlar ($50)</label>
-        <label><input type="checkbox" value="30"> Social media dizayni ($30)</label>
-      </div>
-      <div class="total">Umumiy summa: $<span id="total">0</span></div>
-      <button onclick="submitForm()">Yuborish</button>
-      <div class="info-text">Biz siz bilan imkon qadar tez orada bog'lanamiz</div>
+  <header>
+    <div class="container header-content">
+      <div class="logo">AFTER!</div>
+      <div>Brending Agency</div>
     </div>
-  </div>
-</div>
+  </header>
 
-<script>
-  const checkboxes = document.querySelectorAll('.services input[type=checkbox]');
-  const totalDisplay = document.getElementById('total');
+  <main>
+    <div class="container">
+      <div class="brief-container">
+        <div class="brief-form">
+          <h2>Brending Brief</h2>
+          <form id="briefForm">
+            <div class="form-group">
+              <label>1. Loyihangiz nomi:</label>
+              <input type="text" name="q1">
+            </div>
+            
+            <div class="form-group">
+              <label>2. Faoliyat turi:</label>
+              <input type="text" name="q2">
+            </div>
+            
+            <div class="form-group">
+              <label>3. Nomingiz ma'nosi:</label>
+              <input type="text" name="q3">
+            </div>
+            
+            <div class="form-group">
+              <label>4. Qancha vaqtdan beri mavjud?:</label>
+              <input type="text" name="q4">
+            </div>
+            
+            <div class="form-group">
+              <label>5. Narx segmenti:</label>
+              <select name="q5">
+                <option value="Yuqori">Yuqori</option>
+                <option value="O'rta">O'rta</option>
+                <option value="Past">Past</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>6. Qadriyatlaringiz:</label>
+              <input type="text" name="q6">
+            </div>
+            
+            <div class="form-group">
+              <label>7. Raqobatchilar va yo'nalishlari:</label>
+              <textarea name="q7"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>8. Ustunliklaringiz:</label>
+              <textarea name="q8"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>9. Auditoriya tavsifi:</label>
+              <textarea name="q9"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>10. Xarid odatlari:</label>
+              <textarea name="q10"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>11. Slogan:</label>
+              <input type="text" name="q11">
+            </div>
+            
+            <div class="form-group">
+              <label>12. Bitta so'z bilan ta'rif:</label>
+              <input type="text" name="q12">
+            </div>
+            
+            <div class="form-group">
+              <label>13. Logotip qayerda ko'rsatiladi?:</label>
+              <input type="text" name="q13">
+            </div>
+            
+            <div class="form-group">
+              <label>14. Logotip ko'rinishi:</label>
+              <textarea name="q14"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>15. Minimalizm/detallar:</label>
+              <input type="text" name="q15">
+            </div>
+            
+            <div class="form-group">
+              <label>16. Ranglar istagi/yoki yo'q:</label>
+              <input type="text" name="q16">
+            </div>
+            
+            <div class="form-group">
+              <label>17. Yaratuvchanlik bahosi (1-10):</label>
+              <select name="q17">
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>18. Qaror qabul qiluvchilar:</label>
+              <select name="q18">
+                <option>1</option><option>2-3</option><option>4-5</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>19. Telefon va Telegram:</label>
+              <input type="text" name="q19">
+            </div>
+            
+            <div class="form-group">
+              <label>20. Yoqqan brendlar:</label>
+              <textarea name="q20"></textarea>
+            </div>
+          </form>
+        </div>
+        
+        <div class="calculator">
+          <h2>Kalkulyator</h2>
+          
+          <div class="services">
+            <div class="checkbox-group">
+              <input type="checkbox" id="service1" value="50">
+              <label for="service1" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Logotip ($50)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service2" value="20">
+              <label for="service2" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Prezintatsiya ($20)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service3" value="50">
+              <label for="service3" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Firmenniy stil ($50)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service4" value="5">
+              <label for="service4" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Ranglar ($5)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service5" value="5">
+              <label for="service5" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Shrift ($5)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service6" value="10">
+              <label for="service6" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Guidline style ($10)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service7" value="30">
+              <label for="service7" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Animatsiya logotip ($30)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service8" value="50">
+              <label for="service8" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Brending ($50)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service9" value="200">
+              <label for="service9" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Naming ($200)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service10" value="500">
+              <label for="service10" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Brendbook ($500)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service11" value="300">
+              <label for="service11" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Guidebook ($300)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service12" value="50">
+              <label for="service12" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Konkurent-analiz ($50)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service13" value="30">
+              <label for="service13" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Maqsadli auditoriyani o'rganish ($30)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service14" value="50">
+              <label for="service14" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Vizual dizaynlar ($50)
+              </label>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="service15" value="30">
+              <label for="service15" class="checkbox-label">
+                <div class="checkbox-custom"></div>
+                Social media dizayni ($30)
+              </label>
+            </div>
+          </div>
+          
+          <div class="total">
+            <span>Umumiy summa:</span>
+            <span>$<span id="total">0</span></span>
+          </div>
+          
+          <button onclick="submitForm()">Yuborish</button>
+          
+          <div class="info-text">Biz siz bilan imkon qadar tez orada bog'lanamiz</div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-  function updateTotal() {
-    let total = 0;
-    checkboxes.forEach(cb => {
-      if (cb.checked) total += Number(cb.value);
-    });
-    totalDisplay.textContent = total;
-  }
+  <footer>
+    <div class="container footer-content">
+      <div class="logo">AFTER!</div>
+      <div>© 2025 AFTER! Brending Agency - Barcha huquqlar himoyalangan</div>
+    </div>
+  </footer>
 
-  checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
+  <script>
+    const checkboxes = document.querySelectorAll('.checkbox-group input[type=checkbox]');
+    const totalDisplay = document.getElementById('total');
 
-  function submitForm() {
-    
-    const formData = new FormData(document.getElementById('briefForm'));
-    const selectedServices = [];
-    checkboxes.forEach(cb => {
-      if (cb.checked) selectedServices.push(cb.parentElement.textContent.trim());
-    });
-
-    let message = "🧾 *Yangi brif!*%0A%0A";
-    message += "*Tanlangan xizmatlar:*%0A" + selectedServices.join("%0A") + "%0A%0A";
-    for (let [key, value] of formData.entries()) {
-      message += `*${key}*: ${value}%0A`;
+    function updateTotal() {
+      let total = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) total += Number(cb.value);
+      });
+      totalDisplay.textContent = total;
     }
 
-    const token = "7094241083:AAHqBCDryZOFDtmzwdBOgM4mNfME0vUSZnI";
-    const chatId = "1167533727";
-    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${message}&parse_mode=Markdown`;
+    checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
 
-    fetch(url)
-      .then(response => {
-        if (response.ok) {
-          alert("✅ Ma'lumotlar yuborildi!");
-        } else {
-          alert("❌ Yuborishda xatolik yuz berdi.");
-        }
-      });
-    
-  }
-</script>
-
+    function submitForm() {
+      // Собираем данные формы
+      const formData = new FormData(document.getElementById('briefForm'));
+      const formValues = {};
+      
+      for (let [key, value] of formData.entries()) {
+        formValues[key] = value;
+      }
+      
+      // В демо-режиме просто показываем сообщение
+      alert("✅ Ma'lumotlar yuborildi! (demo rejimi)");
+      
+      // В реальном приложении здесь был бы код для отправки данных на сервер
+      console.log("Отправленные данные:", formValues);
+    }
+  </script>
 </body>
 </html>
