@@ -530,20 +530,34 @@
     checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
 
     function submitForm() {
-      // Собираем данные формы
       const formData = new FormData(document.getElementById('briefForm'));
-      const formValues = {};
-      
+      const selectedServices = [];
+      checkboxes.forEach(cb => {
+        if (cb.checked) selectedServices.push(cb.parentElement.textContent.trim());
+      });
+
+      let message = "🧾 *Yangi brif!*%0A%0A";
+      message += "*Tanlangan xizmatlar:*%0A" + selectedServices.join("%0A") + "%0A%0A";
       for (let [key, value] of formData.entries()) {
-        formValues[key] = value;
+        message += `*${key}*: ${value}%0A`;
       }
-      
-      // В демо-режиме просто показываем сообщение
-      alert("✅ Ma'lumotlar yuborildi! (demo rejimi)");
-      
-      // В реальном приложении здесь был бы код для отправки данных на сервер
-      console.log("Отправленные данные:", formValues);
+
+      const token = "7094241083:AAHqBCDryZOFDtmzwdBOgM4mNfME0vUSZnI";
+      const chatId = "1167533727";
+      const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${message}&parse_mode=Markdown`;
+
+      fetch(url)
+        .then(response => {
+          if (response.ok) {
+            alert("✅ Ma'lumotlar yuborildi!");
+          } else {
+            alert("❌ Yuborishda xatolik yuz berdi.");
+          }
+        });
     }
-  </script>
+
+    // initialize total on page load
+    updateTotal();
+</script>
 </body>
 </html>
